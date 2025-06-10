@@ -5,7 +5,6 @@
     const info = document.getElementById('info');
     const img = document.getElementById('ledImage');
 
-    // Diccionario de imágenes
     const imagenes = {
       A0: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/ledA0.jpeg",
       A1: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/ledA1.jpeg",
@@ -30,14 +29,16 @@
     }
   }
 
-  // Llamar a la función inicialmente
   actualizarImagen();
 
-  // Actualizar automáticamente cada 3 segundos
+  // Consulta la URL cada segundo solo si hay una nueva actualización
   setInterval(() => {
-    // Recargar la URL sin recargar la página
     fetch(window.location.href)
       .then(response => response.text())
-      .then(() => actualizarImagen());
-  }, 3000);
+      .then(text => {
+        if (text.includes("ACTUALIZAR")) {
+          actualizarImagen(); // Solo refresca si Arduino envió una actualización
+        }
+      });
+  }, 1000);
 </script>
