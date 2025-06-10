@@ -10,11 +10,13 @@
   <img id="ledImage" src="" alt="Imagen del LED" style="max-width:90%; height:auto;" />
 
   <script>
+    // Obtener el parámetro "led" de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const led = urlParams.get('led');
     const info = document.getElementById('info');
     const img = document.getElementById('ledImage');
 
+    // Diccionario de imágenes con enlaces en formato raw
     const imagenes = {
       A0: "https://www.dropbox.com/scl/fi/wnu9s98b7nn1lrnq8txif/ledA0.jpeg?raw=1",
       A1: "https://www.dropbox.com/scl/fi/rat45v0kgw4zez3fwdjjw/ledA1.jpeg?raw=1",
@@ -31,8 +33,9 @@
       12: "https://www.dropbox.com/scl/fi/n7nalkxcbmf3m85nszbh8/led12.jpeg?raw=1"
     };
 
+    // Actualizar la imagen si el LED está definido en la URL
     if (led && imagenes[led]) {
-      img.src = imagenes[led];
+      img.src = imagenes[led] + "?nocache=" + new Date().getTime(); // Forzar actualización
       info.textContent = "LED seleccionado: " + led;
     } else {
       info.textContent = "No se especificó un LED válido en la URL.";
