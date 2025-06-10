@@ -17,21 +17,22 @@
     const img = document.getElementById('ledImage');
 
     // Diccionario de imágenes con enlaces corregidos
-    const imagenes = {
-      A0: "https://dl.dropboxusercontent.com/scl/fi/wnu9s98b7nn1lrnq8txif/ledA0.jpeg",
-      A1: "https://dl.dropboxusercontent.com/scl/fi/rat45v0kgw4zez3fwdjjw/ledA1.jpeg",
-      2: "https://dl.dropboxusercontent.com/scl/fi/5zyixflsjazd0ydwzt599/led2.jpeg",
-      3: "https://dl.dropboxusercontent.com/scl/fi/zhkk8gof58l4iizihdex9/led3.jpeg",
-      4: "https://dl.dropboxusercontent.com/scl/fi/65q30ebbppmf71aozk1hm/led4.jpeg",
-      5: "https://dl.dropboxusercontent.com/scl/fi/3ab89g9r1bpqb4pwp8wz5/led5.jpeg",
-      6: "https://dl.dropboxusercontent.com/scl/fi/tpgrcszhgjlb99mst5w3b/led6.jpeg",
-      7: "https://dl.dropboxusercontent.com/scl/fi/xcle9vnqirex9g1ey0o4u/led7.jpeg",
-      8: "https://dl.dropboxusercontent.com/scl/fi/lm5ld5z4c3909ky8u1unj/led8.jpeg",
-      9: "https://dl.dropboxusercontent.com/scl/fi/2nxhqa8bln0b8xw914j3o/led9.jpeg",
-      10: "https://dl.dropboxusercontent.com/scl/fi/8wbv9p2zr5do2uebulna1/led10.jpeg",
-      11: "https://dl.dropboxusercontent.com/scl/fi/00r4q43016mqj1nhqpaxm/led11.jpeg",
-      12: "https://dl.dropboxusercontent.com/scl/fi/n7nalkxcbmf3m85nszbh8/led12.jpeg"
-    };
+   const imagenes = {
+  A0: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/ledA0.jpeg",
+  A1: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/ledA1.jpeg",
+  2: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led2.jpeg",
+  3: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led3.jpeg",
+  4: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led4.jpeg",
+  5: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led5.jpeg",
+  6: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led6.jpeg",
+  7: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led7.jpeg",
+  8: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led8.jpeg",
+  9: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led9.jpeg",
+  10: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led10.jpeg",
+  11: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led11.jpeg",
+  12: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/fbff659e214dccf4c41ac08865fbfc23b9a07027/led12.jpeg"
+};
+
 
     // Actualizar la imagen si el LED está definido en la URL
     if (led && imagenes[led]) {
