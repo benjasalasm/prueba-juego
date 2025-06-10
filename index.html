@@ -1,44 +1,54 @@
-<script>
-  function actualizarImagen() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const led = urlParams.get('led');
-    const info = document.getElementById('info');
-    const img = document.getElementById('ledImage');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Imagen del LED</title>
+</head>
+<body style="text-align:center; font-family:sans-serif;">
+  <h1>Resultado</h1>
+  <p id="info"></p>
+  <img id="ledImage" src="" alt="Imagen del LED" style="max-width:90%; height:auto;" />
 
-    const imagenes = {
-      A0: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/ledA0.jpeg",
-      A1: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/ledA1.jpeg",
-      2: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led2.jpeg",
-      3: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led3.jpeg",
-      4: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led4.jpeg",
-      5: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led5.jpeg",
-      6: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led6.jpeg",
-      7: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led7.jpeg",
-      8: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led8.jpeg",
-      9: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led9.jpeg",
-      10: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led10.jpeg",
-      11: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led11.jpeg",
-      12: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led12.jpeg"
-    };
+  <script>
+    function actualizarImagen() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const led = urlParams.get('led');
+      const info = document.getElementById('info');
+      const img = document.getElementById('ledImage');
 
-    if (led && imagenes[led]) {
-      img.src = imagenes[led] + "?nocache=" + new Date().getTime(); // Evita caché del navegador
-      info.textContent = "LED seleccionado: " + led;
-    } else {
-      info.textContent = "No se especificó un LED válido en la URL.";
+      const imagenes = {
+        A0: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/ledA0.jpeg",
+        A1: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/ledA1.jpeg",
+        2: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led2.jpeg",
+        3: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led3.jpeg",
+        4: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led4.jpeg",
+        5: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led5.jpeg",
+        6: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led6.jpeg",
+        7: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led7.jpeg",
+        8: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led8.jpeg",
+        9: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led9.jpeg",
+        10: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led10.jpeg",
+        11: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led11.jpeg",
+        12: "https://raw.githubusercontent.com/benjasalasm/prueba-juego/main/led12.jpeg"
+      };
+
+      if (led && imagenes[led]) {
+        img.src = imagenes[led] + "?nocache=" + new Date().getTime(); // Evita caché del navegador
+        info.textContent = "LED seleccionado: " + led;
+      } else {
+        info.textContent = "No se especificó un LED válido en la URL.";
+      }
     }
-  }
 
-  actualizarImagen();
+    // Llamar a la función al inicio
+    actualizarImagen();
 
-  // Consulta la URL cada segundo solo si hay una nueva actualización
-  setInterval(() => {
-    fetch(window.location.href)
-      .then(response => response.text())
-      .then(text => {
-        if (text.includes("ACTUALIZAR")) {
-          actualizarImagen(); // Solo refresca si Arduino envió una actualización
-        }
-      });
-  }, 1000);
-</script>
+    // Comprobar cambios en la URL cada 1 segundo para actualizar solo si el LED cambia
+    setInterval(() => {
+      fetch(window.location.href)
+        .then(response => response.text())
+        .then(() => actualizarImagen());
+    }, 1000); // Ajusta según sea necesario
+  </script>
+</body>
+</html>
